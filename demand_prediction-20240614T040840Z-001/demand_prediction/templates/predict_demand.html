@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home Page</title>
+  <style>
+    *{
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+body {
+font-family: Arial, sans-serif;
+margin: 0 auto;
+background-color: #191818;
+height: 100vh;
+background-image: url('https://png.pngtree.com/thumb_back/fh260/back_our/20190621/ourmid/pngtree-cartoon-black-food-poster-background-image_180049.jpg');
+background-size:contain;
+}
+h1 {
+font-weight: bolder; 
+font-size:xx-large; 
+text-align: center;
+color: white; 
+padding:50px;
+}
+label {
+margin-bottom: 0.5rem;
+font-weight: bold;
+color: white;
+align-items: center;
+justify-content: center;
+}
+input,
+select {
+padding: 0.5rem;
+border: 1px solid #ccc;
+border-radius: 4px;
+margin-bottom: 1rem;
+align-items: center;
+justify-content: center;
+}
+input:focus,
+select:focus {
+outline: none;
+box-shadow: 0 0 2px 1px #4a4a4a;
+}
+button[type="submit"] {
+background-color: #4a4a4a;
+color: #fff;
+padding: 0.5rem 1rem;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+}
+button[type="submit"]:hover {
+background-color: #333;
+}
+.App{
+display: flex;
+ justify-content: center;
+ align-items: center;
+ height: 100hv;
+
+}
+.result{
+  margin-top: 2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: large;
+  color: white;
+}
+  </style>
+</head>
+<body>
+  <h1>Food Demand Prediction</h1>
+  <div class="App">
+    <form method="post" class="pre" action="{% url 'predict_demand' %}">
+      {% csrf_token %}
+      <div class="self-center">
+        <label for="featured" >HomePage Featured:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+        
+        <select id="featured" name="featured" >
+
+          <option value="1">Yes</option> 
+          <option value="0">No</option>
+        </select>
+      </div>
+
+      <div class="self-center">
+        <label for="emailer" >Emailer for Promotion:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+        <select id="emailer" name="emailer">
+          <option value="1">Yes</option> 
+          <option value="0">No</option>
+        </select>
+      </div>
+
+      <div class="flex self-center">
+        <label for="area" >Enter the area of operation:</label>
+        <input id="area" name="area"  type="text" placeholder="2-7" required/>
+      </div>
+
+      <div class="self-center">
+        <label for="cuisine" >Select the Cuisine:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+        <select id="cuisine" name="cuisine" >
+          <option value="1">Continental</option> 
+          <option value="2">Indian</option>
+          <option value="3">Italian</option>
+          <option value="4">Thai</option>
+        </select>
+      </div>
+
+      <div class="self-center">
+        <label for="city" >Enter City Code:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+        <input id="city" name="city"  type="text" placeholder="" required />
+      </div>
+
+      <div class="self-center">
+        <label for="region_code" >Enter Region Code:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+        <input id="region_code" name="region_code"  placeholder="23,34,35,56,71,77,85,93" type="text" required /> 
+      </div>
+
+      <div class="self-center">
+        <label for="category" >Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+        <select id="category" name="category" >
+          <option value="1">Beverages</option>
+          <option value="2">Biryani</option>
+          <option value="3">Desert</option>
+          <option value="4">Extras</option>
+          <option value="5">Fish</option>
+          <option value="6">Other Snacks</option>
+          <option value="7">Pasta</option>
+          <option value="8">Pizza</option>
+          <option value="9">Rice Bowl</option>
+          <option value="10">Salad</option>
+          <option value="11">Sandwich</option>
+          <option value="12">Seafood</option>
+          <option value="13">Soup</option>
+          <option value="14">Starters</option>
+          
+        </select> 
+      </div>
+        <br>
+      <div style="text-align:center">
+        <button type="submit">Predict Demand</button>
+      </div>
+    </form>
+  </div>  
+   
+  <div class="result">
+
+    <p>The predicted demand is: {{ prediction }}</p>
+  </div>
+   
+  
+  
+</body>
+</html>

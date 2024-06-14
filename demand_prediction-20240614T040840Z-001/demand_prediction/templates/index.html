@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home Page</title> 
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <h1>Food Demand Prediction</h1>
+  <div class="App">
+    <form method="post"  action="{% url 'predict_demand' %}" >
+    <div class="field">
+    <label >HomePage Featured: </label>
+    <select id="featured" name="featured" >
+      <option value="1">Yes</option> 
+      <option value="0">No</option>
+    </select>
+    </div>
+
+    <div class="field">
+    <label >Emailer for Promotion: </label>
+    <select defaultValue='no'  className='text-center'>
+      <option value="yes">Yes</option> 
+      <option value="no">No</option>
+    </select>
+    </div> 
+
+    <div class="field">
+    <label >Enter the area of operation (km^2): </label>
+    <input  type="text" placeholder="" />
+    </div>
+
+    <div class="field">
+    <label >select the Cusine: </label>
+    <select defaultValue=''  >
+      <option value="Indian">Indian</option> 
+      <option value="Chinese">Chinese</option>
+      <option value="Italian">Italian</option>
+    </select>
+    </div>
+
+    <div class="field">
+    <label>Enter City Code: </label>
+    <input  type="text" placeholder="" />
+    </div>
+    
+
+    <div class="field">
+    <label >Enter Region Code: </label>
+    <input type="text" /> 
+    </div>
+
+    <div class="field">
+    <label >Category: </label>
+    <select >
+      <option value="">Beaverages</option> 
+      <option value=""></option> 
+      <option value=""></option> 
+      <option value=""></option> 
+      <option value=""></option> 
+      <option value=""></option> 
+      <option value=""></option> 
+      <option value=""></option> 
+      <option value=""></option> 
+      <option value=""></option> 
+
+    </select> 
+    </div>
+
+    <button
+    type='submit'>Predict</button>
+  </div>
+</body>
+</html>
